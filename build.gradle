@@ -210,7 +210,7 @@ configure(subprojects - project(":spring-build-src")) { subproject ->
 		}
 	}
 
-	javadoc {
+/*	javadoc {
 		description = "Generates project-level javadoc for use in -javadoc jar"
 
 		options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
@@ -224,7 +224,7 @@ configure(subprojects - project(":spring-build-src")) { subproject ->
 		// Note that global 'api' task does display all warnings.
 		logging.captureStandardError LogLevel.INFO
 		logging.captureStandardOutput LogLevel.INFO  // suppress "## warnings" message
-	}
+	}*/
 
 	task sourcesJar(type: Jar, dependsOn: classes) {
 		duplicatesStrategy = DuplicatesStrategy.EXCLUDE
@@ -233,14 +233,14 @@ configure(subprojects - project(":spring-build-src")) { subproject ->
 		// Don't include or exclude anything explicitly by default. See SPR-12085.
 	}
 
-	task javadocJar(type: Jar) {
-		classifier = "javadoc"
-		from javadoc
-	}
+//	task javadocJar(type: Jar) {
+//		classifier = "javadoc"
+//		from javadoc
+//	}
 
 	artifacts {
 		archives sourcesJar
-		archives javadocJar
+//		archives javadocJar
 	}
 }
 
@@ -249,7 +249,7 @@ configure(rootProject) {
 
 	apply plugin: "groovy"
 	apply from: "${gradleScriptDir}/jdiff.gradle"
-	apply from: "${gradleScriptDir}/docs.gradle"
+//	apply from: "${gradleScriptDir}/docs.gradle"
 
 	dependencyManagement {
 		imports {
@@ -279,11 +279,11 @@ configure(rootProject) {
 		testCompile("org.hibernate:hibernate-core:5.1.16.Final")
 	}
 
-	artifacts {
-		archives docsZip
-		archives schemaZip
-		archives distZip
-	}
+//	artifacts {
+//		archives docsZip
+//		archives schemaZip
+//		archives distZip
+//	}
 
 	wrapper {
 		doLast() {
